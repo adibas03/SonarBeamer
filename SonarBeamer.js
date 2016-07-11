@@ -32,6 +32,8 @@
 
 		if(opts.duration)this.duration = opts.duration;
 
+		if(opts.period)this.period = opts.period;
+
 		this.stweens = [];
 
 		if(errors.length > 0){
@@ -113,15 +115,20 @@
 	function beam() {
 
 	var rep = this.loop?(this.duration?this.duration:-1):0;
-	var del = 0;var speed = 1000;
+	var del = 0;var speed = this.period?this.period:1000;
+
+	var count = 0;
+	for (i in this.graphicsArray) {
+	        count++;
+				}
 
 		for(var i in this.graphicsArray){
 			var twn = this.game.add.tween(this.graphicsArray[i].scale).to( { x:this.grow/100, y:this.grow/100 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
 			this.stweens.push(twn);
 		if(this.fade)var twn = this.game.add.tween(this.graphicsArray[i]).to( { alpha: 0.01 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
 		this.stweens.push(twn);
-
-		del+=500;
+alert(count);
+		del+=speed/count;
 		}
 
 	}
