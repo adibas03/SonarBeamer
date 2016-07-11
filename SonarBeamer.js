@@ -48,12 +48,10 @@
 				this.timer.stop();
 			}
 
-			for(i in this.graphicsArray){
+			for(var i in this.graphicsArray){
 			var anchor_x = this.graphicsArray[i].width;
 			var anchor_y = this.graphicsArray[i].height;
 
-
-			//this.graphicsArray[i].anchor.setTo(anchor_x,anchor_y);
 			this.graphicsArray[i].pivot.set(anchor_x,anchor_y);
 			this.graphicsArray[i].scale.setTo(1,1);
 		  }
@@ -86,10 +84,10 @@
 
 		stop: function() {
 			this.timer.stop();
-			for(i in this.stweens){
+			for(var i in this.stweens){
 				if(this.stweens[i])this.stweens[i].stop();
 			}
-			for(i in this.graphicsArray){
+			for(var i in this.graphicsArray){
 			this.graphicsArray[i].scale.setTo(1,1);
 			this.graphicsArray[i].alpha = 1;
 			}
@@ -117,7 +115,7 @@
 	var rep = this.loop?(this.duration?this.duration:-1):0;
 	var del = 0;var speed = 1000;
 
-		for(i in this.graphicsArray){
+		for(var i in this.graphicsArray){
 			var twn = this.game.add.tween(this.graphicsArray[i].scale).to( { x:this.grow/100, y:this.grow/100 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
 			this.stweens.push(twn);
 		if(this.fade)var twn = this.game.add.tween(this.graphicsArray[i]).to( { alpha: 0.01 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
