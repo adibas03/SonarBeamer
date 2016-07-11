@@ -127,7 +127,7 @@
 			this.stweens.push(twn);
 		if(this.fade)var twn = this.game.add.tween(this.graphicsArray[i]).to( { alpha: 0.01 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
 		this.stweens.push(twn);
-alert(count);
+		
 		del+=speed/count;
 		}
 
