@@ -1,3 +1,13 @@
+/* ==========================================
+ * SonarBeamer.js
+ * https://github.com/adibas03/SonarBeamer
+ * ==========================================
+ * Copyright 2016 Anthony Adegbemi.
+ *
+ * Licensed under the MIT license
+ * http://opensource.org/licenses/MIT
+ * ========================================== */
+
 (function() {
 	"use strict";
 
