@@ -49,6 +49,7 @@ You can use the following options when initialising :
 |--------|-------------|
 | game| (required) a reference to the phaser.game object|
 | graphicsArray| (required) a reference to the list of graphics or sprite to be used to create sonar effect|
+| period| (optional, default 1000) this the total time taken to complete a sonar cycle in milliseconds|
 | grow| (optional, default 200) this the percentage of the growth of the graphics. 100 means no growth|
 | fade| (optional, default true) this indicates whether or not the graphics should fade out |
 | loop| (optional, default true) this indicates whether or not the effect is fired once or looped |
