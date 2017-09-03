@@ -11,6 +11,11 @@ You can clone this repo or use bower to install it:
 bower install git://github.com/adibas03/SonarBeamer.git --save
 ```
 
+On NPM
+```
+npm install git://github.com/adibas03/SonarBeamer.git --save
+```
+
 Usage:
 ```javascript
 // if you use browserify use the following, otherwise load it with your preferred method
@@ -36,7 +41,7 @@ var beamer = new SonarBeamer({
     fade:true,
     onComplete: function() {...}
   });
-  
+
   beamer.start();
 ```
 
@@ -73,4 +78,3 @@ You can use the following options when initialising :
 | Flag | Description |
 |--------|-------------|
 | hasFinished | boolean value showing if the indicator has finished counting or not |
-
