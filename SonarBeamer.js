@@ -62,7 +62,7 @@
 			this.hasFinished = true;
 
 			this.timer = this.game.time.create(true);
-			this.timer.add(0,beam,this);
+			this.timer.add(0,this.beam,this);
 
 				this.timer.onComplete.add(function() {
 					self.hasFinished = true;
@@ -108,33 +108,52 @@
 				if(this.stweens[i])this.stweens[i].resume();
 			}
 		},
+		end: function(kill){
+			this.stop();
+			var time = (this.type == 'down')?0:1;
+			var wdt = time*this.fullWidth;
+			if(wdt != this.rect.width){
+			var self = this;
+			this.game.add.tween(this.sprite)
+			.to({width:wdt},200,Phaser.Easing.Linear.None,true,0,0,false)
+			.onComplete.add(function(){
+				if(kill)self.sprite.kill();
+			})
+		}
+		else if(kill)self.sprite.kill();
+
+			this.hasFinished = true;
+			if (this.onComplete)
+				this.onComplete();
+
+		},
+		beam: function() {
+
+		var rep = this.loop?(this.duration?this.duration:-1):0;
+		var del = 0;var speed = this.period?this.period:1000;
+
+		var count = 0;
+		for (i in this.graphicsArray) {
+		        count++;
+					}
+
+			for(var i in this.graphicsArray){
+				var twn = this.game.add.tween(this.graphicsArray[i].scale).to( { x:this.grow/100, y:this.grow/100 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
+				this.stweens.push(twn);
+			if(this.fade)var twn = this.game.add.tween(this.graphicsArray[i]).to( { alpha: 0.01 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
+			this.stweens.push(twn);
+
+			del+=speed/count;
+			}
+
+		}
+
 
 	};
 
 
-	function beam() {
-
-	var rep = this.loop?(this.duration?this.duration:-1):0;
-	var del = 0;var speed = this.period?this.period:1000;
-
-	var count = 0;
-	for (i in this.graphicsArray) {
-	        count++;
-				}
-
-		for(var i in this.graphicsArray){
-			var twn = this.game.add.tween(this.graphicsArray[i].scale).to( { x:this.grow/100, y:this.grow/100 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
-			this.stweens.push(twn);
-		if(this.fade)var twn = this.game.add.tween(this.graphicsArray[i]).to( { alpha: 0.01 }, speed, Phaser.Easing.Linear.None, true, del, rep, false);
-		this.stweens.push(twn);
-		
-		del+=speed/count;
-		}
-
-	}
-
-
-	if (module) {
+	if (typeof module != 'undefined') {
 		module.exports = SonarBeamer;
 	}
+	else window.SonarBeamer = SonarBeamer;
 })();
