@@ -1,0 +1,24 @@
+{
+  "name": "sonarbeamer",
+  "version": "1.0.0",
+  "description": "Create sonar effect in Phaserjs.",
+  "main": "SonarBeamer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adibas03/SonarBeamer.git"
+  },
+  "keywords": [
+    "phaserjs",
+    "sonar",
+    "timer"
+  ],
+  "author": "Adiabs03",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adibas03/SonarBeamer/issues"
+  },
+  "homepage": "https://github.com/adibas03/SonarBeamer#readme"
+}
