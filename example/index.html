@@ -1,0 +1,49 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser-ce/2.8.5/phaser.js"></script>
+<script src="../SonarBeamer.js"></script>
+<script>
+
+$(document).ready(function() {
+
+    var game = new Phaser.Game(1200, 600, Phaser.AUTO,'',{ preload: preload, create: create });
+
+    function preload(){
+    // in preload
+    }
+
+    function create(){
+    // in create
+    var sonar= {};
+
+    //Add 2 graphics to be alternated between to an array or object
+        for(var s=0;s<2;s++){
+        var graphics = game.add.graphics(600, 270);
+        graphics.beginFill(0xccffcc, 1);
+        graphics.drawCircle(100, 100, 100);
+        sonar[s] = graphics;
+        }
+
+
+    var beamer = new SonarBeamer({
+        game:game,
+        graphicsArray: sonar,
+        grow:300,
+        loop:true,
+        fade:true,
+        onComplete: function() {console.log('Finished')}
+      });
+
+      beamer.start();
+      game.time.events.add(Phaser.Timer.SECOND * 3 ,stopfunc);
+
+    function stopfunc(){
+      beamer.stop();
+      console.log('stopped')
+    }
+
+
+  }
+
+  });
+
+</script>
